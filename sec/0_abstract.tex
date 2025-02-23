@@ -1,7 +1,8 @@
 \begin{abstract}
-The ABSTRACT is to be in fully justified italicized text, at the top of the left-hand column, below the author and affiliation information.
-Use the word ``Abstract'' as the title, in 12-point Times, boldface type, centered relative to the column, initially capitalized.
-The abstract is to be in 10-point, single-spaced type.
-Leave two blank lines after the Abstract, then begin the main text.
-Look at previous \confName abstracts to get a feel for style and length.
+Accurate single cell detection in brightfield microscopy is crucial for biological research, yet data scarcity and annotation bottlenecks limit the progress of deep learning methods.
+We investigate the use of unconditional models to generate synthetic brightfield microscopy images and evaluate their impact on object detection performance.
+A U-Net based diffusion model was trained and used to create datasets with varying ratios of synthetic and real images.
+Experiments with YOLOv8, YOLOv9 and RT-DETR reveal that training with synthetic data achieves comparable, and in some cases, slightly improved detection accuracies at lower Intersection over Union (IoU) thresholds.
+A human expert survey demonstrates the high realism of generated images, with experts struggling to distinguish them from real microscopy images (accuracy $\sim$50\%).
+Our findings suggest that diffusion-based synthetic data generation is a promising avenue for augmenting real datasets in microscopy image analysis, reducing the reliance on extensive manual annotation and potentially improving the robustness of cell detection models.
 \end{abstract}

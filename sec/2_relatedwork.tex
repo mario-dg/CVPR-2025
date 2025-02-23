@@ -1,0 +1,14 @@
+\section{Related Work}
+\label{sec:related-work}
+Synthetic microscopy image generation has gained traction for data augmentation and algorithm development.
+Early methods employed rule-based models and physical simulations~\cite{david_svoboda_generation_2012,david_svoboda_towards_2013,rajaram_simucell_2012}, often limited by their ability to capture complex biological diversity.
+
+Deep learning-based generative models, particularly GANs and diffusion models, have emerged as powerful alternatives.
+GANs have been used for cross-modality translation~\cite{christiansen_silico_2018,gyuhyun_lee_deephcs_2018,gyuhyun_lee_deephcs_2021}, super-resolution~\cite{zhang_high-throughput_2019}, and cell image generation~\cite{marin_scalbert_generic_2019}.
+However, GAN training can be unstable and prone to mode collapse~\cite{juan_c_caicedo_evaluation_2019,ricard_durall_combating_2020}.
+
+Diffusion models, inspired by non-equilibrium thermodynamics~\cite{jascha_sohl-dickstein_deep_2015}, offer improved training stability and sample quality~\cite{ho_denoising_2020,song_denoising_2020}.
+Applications in microscopy include painting image generation~\cite{cross-zamirski_class-guided_2023}, super-resolution~\cite{gabriel_della_maggiora_conditional_2023}, electron microscopy enhancement~\cite{lu_diffusion-based_2024}, and physics-informed reconstruction~\cite{li_microscopy_2023}.
+
+While diffusion models are increasingly used in microscopy image generation, research on their direct application for enhancing \textbf{object detection} in brightfield microscopy remains limited.
+This work addresses this gap by systematically evaluating the impact of diffusion-based synthetic brightfield microscopy image data on single cell detection performance using state-of-the-art object detection models.

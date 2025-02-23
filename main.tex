@@ -19,6 +19,8 @@
 % (Or just hit 'q' on the first LaTeX run, let it finish, and you should be clear).
 \definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
 \usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+\usepackage{multirow}
+\usepackage{colortbl}
 
 %%%%%%%%% PAPER ID  - PLEASE UPDATE
 \def\paperID{*****} % *** Enter the Paper ID here
@@ -26,7 +28,7 @@
 \def\confYear{2025}
 
 %%%%%%%%% TITLE - PLEASE UPDATE
-\title{\LaTeX\ Leveraging Diffusion Based Image Generation to Investigate its Impact on Single Cell Detection Accuracy}
+\title{Diffusion-Based Synthetic Brightfield Microscopy Images for Enhanced Single Cell Detection}
 
 %%%%%%%%% AUTHORS - PLEASE UPDATE
 \author{Mario de Jesus da Graca\\
@@ -47,10 +49,13 @@ First line of institution2 address\\
 
 \begin{document}
 \maketitle
-\input{sec/0_abstract}    
-\input{sec/1_intro}
-\input{sec/2_formatting}
-\input{sec/3_finalcopy}
+\input{sec/0_abstract}
+\input{sec/1_introduction}
+\input{sec/2_relatedwork}
+\input{sec/3_methodology}
+\input{sec/4_experimentsandresults}
+\input{sec/5_discussion}
+\input{sec/6_conclusion}
 {
     \small
     \bibliographystyle{ieeenat_fullname}
