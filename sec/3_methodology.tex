@@ -34,7 +34,7 @@ Training was performed using Distributed Data Parallel (DDP) across two NVIDIA A
 Model selection was based on a combination of visual inspection of generated samples and quantitative evaluation using the Fréchet Inception Distance (FID) scores.
 FID scores were calculated against a held-out set of real images to objectively measure the similarity between the distributions of real and generated images and computed every 10 epochs to track training progress and identify optimal model states.
 
-For the final synthetic image generation, the Euler a scheduler was chosen for its balance of sample quality and generation speed, determined through empirical testing of various schedulers.
+For the final synthetic image generation, the Euler Ancestral scheduler was chosen for its balance of sample quality and generation speed, determined through empirical testing of various schedulers.
 Trailing timestep spacing and epsilon prediction type were used based on hyperparameter optimization experiments that indicated these settings produced visually superior results for our dataset.
 To introduce variability and potentially enhance the robustness of the downstream object detectors, the number of inference steps during the final generation process was randomized between 35 and 40 steps for each batch of 16 images.
 A total of 10,000 synthetic images were generated using this optimized configuration to create datasets for object detection model training.
@@ -59,7 +59,7 @@ The automatically generated bounding boxes were then manually reviewed and refin
 This hybrid approach significantly reduced the manual labeling effort while maintaining high-quality annotations.
 
 Synthetic images were labeled using a model-assisted labeling approach.
-A YOLOv8m model was initially pre-trained and then fine-tuned on a subset of real labeled images.
+A pretrained YOLOv8m model was fine-tuned on a subset of real labeled images.
 This fine-tuned YOLOv8m model was then integrated into the Roboflow annotation tool's ``Model-Assisted Labeling'' feature.
 These model-predicted bounding boxes were then manually reviewed and refined by a human expert to correct any inaccuracies, missed detections or false positives.
 This approach leveraged the pre-trained object detection model to expedite the labeling of synthetic data, while manual refinement ensured the final labels were of high quality.
