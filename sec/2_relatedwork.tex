@@ -19,7 +19,7 @@ Cross-modality translation, aiming to predict fluorescence microscopy images fro
 Christiansen \etal introduced ``In Silico Labeling'' (ISL) using deep learning to predict fluorescence labels from transmitted light images~\cite{christiansen_silico_2018}.
 Building upon this, Lee \etal developed DeepHCS and DeepHCS++ to transform brightfield images into multiple fluorescence channels relevant for high-contrast screening, leveraging adversarial losses for realism~\cite{gyuhyun_lee_deephcs_2018,gyuhyun_lee_deephcs_2021}.
 GANs have also been applied to enhance image quality achieving super-resolution under a large field-of-view~\cite{zhang_high-throughput_2019} and generate isolate cell images approximating the shape and texture distributions of cell components~\cite{marin_scalbert_generic_2019}.
-Despite these success, GANs are known to suffer from training instability and mode collapse, limiting the diversity and reliability of generated samples, particularly when training data is scarce, complex or imbalanced, as often encountered in microscopy~\cite{juan_c_caicedo_evaluation_2019,ricard_durall_combating_2020}.
+Despite these successes, GANs are known to suffer from training instability and mode collapse, limiting the diversity and reliability of generated samples, particularly when training data is scarce, complex or imbalanced, as often encountered in microscopy~\cite{juan_c_caicedo_evaluation_2019,ricard_durall_combating_2020}.
 
 
 Diffusion models, inspired by non-equilibrium thermodynamics and rooted in denoising score matching, offer improved training stability, sample quality and diversity~\cite{jascha_sohl-dickstein_deep_2015,ho_denoising_2020,song_denoising_2020}.
@@ -33,5 +33,5 @@ These works highlight the growing interest in diffusion models for various micro
 While diffusion models are increasingly used in microscopy image generation, research on their direct application for enhancing \textbf{object detection}, specifically in the challenging domain of brightfield microscopy, remains significantly limited.
 Existing studies primarily focus on image generation quality evaluation and downstream tasks like segmentation or image-based profiling.
 The critical question of whether and how diffusion-based synthetic brightfield microscopy images can effectively improve the performance of object detection models for single cell detection has not been systematically addressed.
-This work directly addresses this gap by undertaking a comprehensive evaluation of the impact on diffusion-based synthetic brightfield microscopy image data on single cell detection performance.
+This work is directly pertinent to the aforementioned issue by undertaking a comprehensive evaluation of the impact on diffusion-based synthetic brightfield microscopy image data on single cell detection performance.
 By focusing on object detection, this research contributes a novel perspective to the field, exploring the practical utility of synthetic data for a fundamental task in quantitative microscopy.

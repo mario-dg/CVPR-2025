@@ -14,7 +14,7 @@ However, these cues proved unreliable, ultimately leading to the near-chance lev
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{images/norm_confusion_matrix}
+    \includegraphics[width=0.75\linewidth]{images/norm_confusion_matrix}
     \caption{Normalized confusion matrix of expert survey classifications. Overall accuracy is approximately 50\%, demonstrating the significant difficulty for experts in distinguishing real and synthetic brightfield microscopy images.}
     \label{fig:conf_matrix}
 \end{figure}
@@ -22,15 +22,15 @@ However, these cues proved unreliable, ultimately leading to the near-chance lev
 \subsection{Object Detection Performance}
 \label{subsec:object-detection-performance}
 Table~\ref{tab:model-performances} summarizes the object detection performance, presenting mAP metrics for all trained models across the seven datasets.
-Analyzing mAP\@50, we observe that models trained with synthetic data replacing parts of the real data (\textit{scc\_10}, \textit{scc\_30}, \textit{scc\_50}) achieve comparable, and in some cases, slightly improved performance compared to models trained solely on real data (\textit{scc\_real}).
+Analyzing mAP\@50, we observe that models trained with synthetic data replacing parts of the real data (\textit{scc\_10}, \textit{scc\_30}, \textit{scc\_50}) achieve comparable, and in some cases, improved performance compared to models trained solely on real data (\textit{scc\_real}).
 Specifically, the YOLOv8s model trained on the \textit{scc\_30} dataset achieved a mAP\@50 of 0.9043, marginally exceeding the 0.8947 achieved by the same model trained on the \textit{scc\_real} dataset.
-Similarly, the RT-DETR-l model trained on the \textit{scc\_10} dataset reached a mAP\@50 of 0.9147, very slightly outperforming the 0.9146 achieved on the \textit{scc\_real} dataset.
-These results suggest that synthetic data augmentation can maintain or even slightly enhance detection performance at lower IoU thresholds, potentially due to increased data variability and improved model robustness.
+Similarly, the RT-DETR-l model trained on the \textit{scc\_10} dataset reached a mAP\@50 of 0.9147, outperforming the 0.9146 achieved on the \textit{scc\_real} dataset.
+These results suggest that synthetic data augmentation can maintain or even enhance detection performance at lower IoU thresholds, potentially due to increased data variability and improved model robustness.
 
-However, when examining performance at higher IoU thresholds, specifically mAP\@75 and mAP\@50:95, a subtle trend of performance decrease merges for models trained with increasing proportions of synthetic data.
+However, when examining performance at higher IoU thresholds, specifically mAP\@75 and mAP\@50:95, a subtle trend of performance decrease emerges for models trained with increasing proportions of synthetic data.
 This trend is more pronounced for the RT-DETR models, indicating a potentially greater sensitivity of transformer-based architectures to the characteristics of synthetic data.
 
-Qualitative assessment of sample detections (examples in supplementary material) revealed that all models, including those trained with synthetic data, generally performed well in detecting cells under diverse conditions, including overlapping cells and cells at image boundaries.
+Qualitative assessment of sample detections revealed that all models, including those trained with synthetic data, generally performed well in detecting cells under the conditions proposed by the test split, including overlapping cells and cells at image boundaries.
 However, subtle differences in detection precision and confidence scores were observed, warranting further investigation into the fine-grained impact of synthetic data on model behavior.
 
 \begin{table}[h!]
