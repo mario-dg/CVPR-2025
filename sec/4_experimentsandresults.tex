@@ -23,16 +23,30 @@ However, these cues proved unreliable, ultimately leading to the near-chance lev
 \label{subsec:object-detection-performance}
 Table~\ref{tab:model-performances} summarizes the object detection performance, presenting mAP metrics for all trained models across the seven datasets.
 Analyzing mAP\@50, we observe that models trained with synthetic data replacing parts of the real data (\textit{scc\_10}, \textit{scc\_30}, \textit{scc\_50}) achieve comparable, and in some cases, improved performance compared to models trained solely on real data (\textit{scc\_real}).
-Specifically, the YOLOv8s model trained on the \textit{scc\_30} dataset achieved a mAP\@50 of 0.9043, marginally exceeding the 0.8947 achieved by the same model trained on the \textit{scc\_real} dataset.
+Specifically, the YOLOv8s model trained on the \textit{scc\_30} dataset achieved a mAP\@50 of 0.9043, exceeding the 0.8947 achieved by the same model trained on the \textit{scc\_real} dataset.
 Similarly, the RT-DETR-l model trained on the \textit{scc\_10} dataset reached a mAP\@50 of 0.9147, outperforming the 0.9146 achieved on the \textit{scc\_real} dataset.
-These results suggest that synthetic data augmentation can maintain or even enhance detection performance at lower IoU thresholds, potentially due to increased data variability and improved model robustness.
-
-However, when examining performance at higher IoU thresholds, specifically mAP\@75 and mAP\@50:95, a subtle trend of performance decrease emerges for models trained with increasing proportions of synthetic data.
+However, when examining performance at higher IoU thresholds, specifically mAP\@75 and mAP\@50:95, a subtle trend of performance decrease emerges for models trained with increasing proportions of replaced synthetic data.
 This trend is more pronounced for the RT-DETR models, indicating a potentially greater sensitivity of transformer-based architectures to the characteristics of synthetic data.
 
-Qualitative assessment of sample detections revealed that all models, including those trained with synthetic data, generally performed well in detecting cells under the conditions proposed by the test split, including overlapping cells and cells at image boundaries.
-However, subtle differences in detection precision and confidence scores were observed, warranting further investigation into the fine-grained impact of synthetic data on model behavior.
+Continuing the analysis of object detection performance, we turn on the datasets where synthetic images were \textbf{added} to the real training data (\textit{scc\_add\_10}, \textit{scc\_add\_30}, \textit{scc\_add\_50}).
+Examining mAP\@50 in Table~\ref{tab:model-performances}, we observe that models trained on these augmented datasets generally maintain a high level of performance, comparable to the baseline performance achieved with the \textit{scc\_real} dataset as well.
+For instance, the YOLOv8s model shows a consistent mAP@50 around 0.8949-0.8952 across \textit{scc\_add\_10}, \textit{scc\_add\_30}, and \textit{scc\_add\_50}, similar to the 0.8947 of \textit{scc\_real}.
+Notably, the YOLOv8m model achieves a mAP@50 of 0.9034 on \textit{scc\_add\_30}, closely matching the 0.9038 of the \textit{scc\_real} baseline.
+The larger models, YOLOv8x, YOLOv9c, and YOLOv9e, also exhibit this trend of maintained high mAP@50 when trained with added synthetic data, suggesting that supplementing real data with synthetic images does not degrade the detection accuracy at this IoU threshold.
 
+When considering the more stringent mAP@75 metric, we see a different pattern of maintained performance with added synthetic data compared to the replacement datasets.
+In several instances, models trained on \textit{scc\_add\_30} even achieve slightly improved mAP@75 scores compared to the \textit{scc\_real} dataset.
+For example, YOLOv8s reaches 0.8115 on \textit{scc\_add\_30} versus 0.8095 on \textit{scc\_real}, and YOLOv8m achieves 0.8224 on \textit{scc\_add\_30} compared to 0.8203 on \textit{scc\_real}.
+This marginal improvement is also seen in YOLOv8x and YOLOv9c models on \textit{scc\_add\_30}.
+Looking at the mAP@50:95 metric, only the YOLOv9e model trained on \textit{scc\_add\_50} achieves a higher score than the \textit{scc\_real} baseline, with a value of 0.6651 compared to 0.6629.
+
+Generally, all models that were trained with replaced synthetic data augmentation maintained or achieved similar performance (less than 2\% difference) throughout the different datasets and IoU thresholds.
+When it comes to models trained with added synthetic data, the performance was also maintained or slightly improved, particularly at lower IoU thresholds, with the exception of the RT-DETR models that showed a more pronounced sensitivity to the synthetic data proportion, achieving a
+decreased performance of up to 5\% with the \textit{scc\_add\_50} dataset at more stringent IoU thresholds.
+These results suggest that synthetic data augmentation can mostly maintain or even enhance detection performance at lower IoU thresholds, potentially due to increased data variability, dataset size and improved model robustness.
+
+Qualitative assessment of sample detections revealed that all models, including those trained with synthetic data, generally performed well in detecting cells under the conditions proposed by the test split, including overlapping cells and cells at image boundaries.
+However, subtle differences in detection precision and confidence scores were observed, especially for the transformer-based models, warranting further investigation into the fine-grained impact of synthetic data on model behavior.
 \begin{table}[h!]
     \centering
     \caption{Detailed comparison of the performance metrics for all evaluated models across the different training datasets.}
