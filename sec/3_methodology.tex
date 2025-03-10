@@ -19,14 +19,14 @@ Patches containing visible well edges, identified as dark arch artifacts due to 
 The final dataset of 10,000 patches was randomly sampled from the filtered set of approximately 24,000 patches to manage computation resources within the scope of this research.
 For efficient data loading and processing during training, the dataset was converted into the Hugging Face Datasets format, stored as parquet files, which facilitates faster data access and management~\cite{vohra_apache_2016}.
 
-We employed an unconditional diffusion models based on U-Net architectures and attention mechanisms as the backbone for image generation.
+We employed unconditional diffusion models based on U-Net architectures and attention mechanisms as the backbone for image generation.
 The U-Net architecture was chosen for its proven effectiveness in image generation and segmentation tasks, particularly in biomedical imaging, due to its ability to capture both local and global context through its encode-decoder structure and skip connections~\cite{ronneberger_u-net_2015}.
-The specific U-Net architecture implemented consisted of downsampling and upsampling blocks with residual connections to facilitate gradient flow and improve training stability.
+The specific U-Net architecture implemented consists of downsampling and upsampling blocks with residual connections to facilitate gradient flow and improve training stability.
 Attention mechanisms were optionally incorporated into both the downsampling and upsampling paths in some model variants to investigate their impact on image generation quality.
 The number of up and down blocks, channel configurations and the placement of attention blocks were varied across different model configurations to evaluate architectural choices.
 
 The diffusion model was trained using the DDIM scheduler~\cite{song_denoising_2020} for efficient sampling during training and to explore faster inference capabilities.
-The model was trained for 350 epochs using the AdamW optimizer with a learning rate of $1e^{-4}$.
+The model was trained for 350 epochs using the AdamW optimizer with a learning rate of $10^{-4}$.
 Moving Average (EMA) with a decay of 0.9999 was applied to the model weights to stabilize training and potentially improve generalization.
 A batch size of 4 was used, constrained by GPU memory limitations.
 Training was performed using Distributed Data Parallel (DDP) across two NVIDIA A100-SXM4-40GB GPUs with mixed precision (float16) enabled using PyTorch Lightning~\cite{falcon_pytorchlightningpytorch-lightning_2020} to accelerate training.
@@ -60,8 +60,8 @@ This hybrid approach significantly reduced the manual labeling effort while main
 
 Synthetic images were labeled using a model-assisted labeling approach.
 A pretrained YOLOv8m model was fine-tuned on a subset of real labeled images.
-This fine-tuned YOLOv8m model was then integrated into the Roboflow annotation tool's ``Model-Assisted Labeling'' feature.
-These model-predicted bounding boxes were then manually reviewed and refined by a human expert to correct any inaccuracies, missed detections or false positives.
+This fine-tuned YOLOv8m model was integrated into the Roboflow annotation tool's ``Model-Assisted Labeling'' feature.
+These model-predicted bounding boxes were also manually reviewed and refined by a human expert to correct any inaccuracies, missed detections or false positives, to ensure consistency between real and synthetic image labelling.
 This approach leveraged the pre-trained object detection model to expedite the labeling of synthetic data, while manual refinement ensured the final labels were of high quality.
 
 We fine-tuned three state-of-the-art object detection model families: YOLOv8 (sizes s, m, x)~\cite{jocher_ultralytics_2023}, YOLOv9 (sizes c, e)~\cite{Wang2024YOLOv9LW}, and RT-DETR (sizes l, x)~\cite{Lv2023DETRsBY}.
